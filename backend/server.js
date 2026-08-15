@@ -18,12 +18,17 @@ app.post("/api/contact", async (req, res) => {
   const { name, email, message } = req.body;
 
   if (!name || !email || !message) {
-    return res.status(400).json({ error: "Name, email, and message are all required." });
+    return res
+      .status(400)
+      .json({ error: "Name, email, and message are all required." });
   }
 
   try {
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
+      family: 4, // force IPv4 — Render's default IPv6 route often times out reaching Gmail
       auth: {
         user: process.env.EMAIL_USER, // your Gmail address
         pass: process.env.EMAIL_PASS, // Gmail App Password (not your normal password)
@@ -41,7 +46,9 @@ app.post("/api/contact", async (req, res) => {
     res.json({ success: true });
   } catch (err) {
     console.error("Email send failed:", err);
-    res.status(500).json({ error: "Failed to send message. Please try again later." });
+    res
+      .status(500)
+      .json({ error: "Failed to send message. Please try again later." });
   }
 });
 
