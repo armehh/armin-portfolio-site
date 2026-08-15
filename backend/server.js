@@ -1,6 +1,5 @@
 const express = require("express");
 const cors = require("cors");
-const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 const app = express();
@@ -24,24 +23,27 @@ app.post("/api/contact", async (req, res) => {
   }
 
   try {
-    const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 465,
-      secure: true,
-      family: 4, // force IPv4 — Render's default IPv6 route often times out reaching Gmail
-      auth: {
-        user: process.env.EMAIL_USER, // your Gmail address
-        pass: process.env.EMAIL_PASS, // Gmail App Password (not your normal password)
+    // Uses Resend's HTTPS API instead of raw SMTP — Render's free tier blocks
+    // outbound SMTP ports (465/587), but regular HTTPS (443) always works.
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
       },
+      body: JSON.stringify({
+        from: "Portfolio Contact Form <onboarding@resend.dev>",
+        to: [process.env.EMAIL_USER], // sends to yourself
+        reply_to: email,
+        subject: `New portfolio message from ${name}`,
+        text: `From: ${name} (${email})\n\n${message}`,
+      }),
     });
 
-    await transporter.sendMail({
-      from: `"Portfolio Contact Form" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_USER, // sends to yourself
-      replyTo: email,
-      subject: `New portfolio message from ${name}`,
-      text: `From: ${name} (${email})\n\n${message}`,
-    });
+    if (!response.ok) {
+      const errText = await response.text();
+      throw new Error(`Resend API error: ${response.status} ${errText}`);
+    }
 
     res.json({ success: true });
   } catch (err) {
