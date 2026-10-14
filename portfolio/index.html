@@ -32,10 +32,12 @@
   <div class="container navbar-inner">
     <a href="#top" class="logo">Armin<span>.</span></a>
     <nav class="nav-links">
+      <a href="#about">About</a>
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
       <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
     </nav>
     <a href="#" id="download-cv-btn" class="btn btn-gradient btn-small" download>Download CV</a>
   </div>
@@ -62,27 +64,70 @@
       </div>
     </div>
 
-    <div class="hero-photo reveal">
-      <div class="photo-glow"></div>
-      <img id="hero-photo" src="" alt="Armin Rafiqin">
+    <div class="hero-visual reveal">
+      <div class="hero-photo">
+        <div class="photo-glow"></div>
+        <div class="orbit orbit-1"></div>
+        <div class="orbit orbit-2"></div>
+        <img id="hero-photo" src="" alt="Armin Rafiqin">
+      </div>
+      <div id="hero-float-cards"></div>
     </div>
   </div>
-
-  <div class="stats-strip reveal" id="stats-strip"></div>
 </section>
 
-<!-- ===== PROFESSIONAL SUMMARY ===== -->
-<section class="summary reveal">
+<!-- ===== TECH MARQUEE ===== -->
+<div class="marquee" aria-label="Technologies I work with">
+  <div class="marquee-track" id="marquee-track"></div>
+</div>
+
+<!-- ===== STATS ===== -->
+<section class="stats-section">
+  <div class="container stats-inner">
+    <div class="stats-intro reveal">
+      <h2 id="stats-title"></h2>
+      <p id="stats-text"></p>
+    </div>
+    <div class="stats-grid reveal" id="stats-strip"></div>
+  </div>
+</section>
+
+<!-- ===== ABOUT / PROFESSIONAL SUMMARY ===== -->
+<section id="about" class="summary">
   <div class="container">
-    <h2 class="section-title">Professional Summary</h2>
-    <p class="summary-text" id="summary-text"></p>
+    <div class="section-head reveal">
+      <h2 class="section-title section-title-left">Professional Summary</h2>
+      <p class="section-desc">A quick introduction to who I am, what I build and what I am looking for next.</p>
+    </div>
+
+    <div class="summary-layout">
+      <div class="summary-main reveal">
+        <p class="summary-text" id="summary-text"></p>
+        <div class="services-grid" id="services-grid"></div>
+      </div>
+
+      <aside class="summary-panel reveal">
+        <div class="panel-orb"></div>
+        <span class="panel-label" id="panel-label"></span>
+        <h3 id="panel-title"></h3>
+        <p id="panel-text"></p>
+        <a href="#contact" class="btn btn-gradient btn-small" id="panel-cta"></a>
+      </aside>
+    </div>
   </div>
 </section>
 
 <!-- ===== EXPERIENCE & LEADERSHIP ===== -->
 <section id="experience" class="experience">
-  <div class="container">
-    <h2 class="section-title section-title-left reveal">Experience &amp; Leadership</h2>
+  <div class="container experience-layout">
+    <div class="experience-intro reveal">
+      <h2 class="section-title section-title-left">Experience &amp; Leadership</h2>
+      <p class="section-desc">Two years leading multimedia and publicity work for student communities at UKM.</p>
+      <div class="intro-chip">
+        <span class="chip-dot"></span>
+        PERTAMA &rarr; PERMAS
+      </div>
+    </div>
     <div class="timeline" id="timeline"></div>
   </div>
 </section>
@@ -90,7 +135,10 @@
 <!-- ===== FEATURED PROJECTS ===== -->
 <section id="projects" class="projects">
   <div class="container">
-    <h2 class="section-title reveal">Featured Projects</h2>
+    <div class="section-head reveal">
+      <h2 class="section-title section-title-left">Featured Projects</h2>
+      <p class="section-desc">Games, platforms and web apps built through coursework and my final year project.</p>
+    </div>
     <div class="project-grid" id="project-grid"></div>
   </div>
 </section>
@@ -98,39 +146,57 @@
 <!-- ===== TECHNICAL SKILLS ===== -->
 <section id="skills" class="skills">
   <div class="container">
-    <h2 class="section-title reveal">Technical Skills</h2>
+    <div class="section-head reveal">
+      <h2 class="section-title section-title-left">Technical Skills</h2>
+      <p class="section-desc">The languages, tools and methods I use across web, game and design work.</p>
+    </div>
     <div class="skills-grid" id="skills-grid"></div>
   </div>
 </section>
 
 <!-- ===== EDUCATION / ACHIEVEMENTS / LANGUAGES ===== -->
 <section id="education" class="bottom-grid">
-  <div class="container bottom-grid-inner">
-    <div class="reveal">
-      <h2 class="section-title section-title-left">Education</h2>
-      <div id="education-list"></div>
+  <div class="container">
+    <div class="section-head reveal">
+      <h2 class="section-title section-title-left">Education &amp; Recognition</h2>
+      <p class="section-desc">My academic path, the awards I have earned and the languages I work in.</p>
     </div>
 
-    <div class="reveal">
-      <h2 class="section-title section-title-left">Achievements</h2>
-      <ul class="plain-list" id="achievements-list"></ul>
+    <div class="bottom-grid-inner">
+      <div class="bottom-card reveal">
+        <h3 class="card-heading">Education</h3>
+        <div id="education-list"></div>
+      </div>
 
-      <h2 class="section-title section-title-left" style="margin-top:2rem;">Languages</h2>
-      <ul class="plain-list" id="languages-list"></ul>
+      <div class="bottom-col reveal">
+        <div class="bottom-card">
+          <h3 class="card-heading">Achievements</h3>
+          <ul class="plain-list" id="achievements-list"></ul>
+        </div>
+        <div class="bottom-card">
+          <h3 class="card-heading">Languages</h3>
+          <ul class="plain-list" id="languages-list"></ul>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ===== CONTACT ===== -->
 <section id="contact" class="contact">
-  <div class="container reveal">
-    <h2 class="section-title">Get In Touch</h2>
+  <div class="container contact-layout reveal">
+    <div class="contact-info">
+      <h2 class="section-title section-title-left">Get In Touch</h2>
+      <p class="contact-lead">Have an internship, project or collaboration in mind? Send me a message and I will get back to you soon.</p>
+      <ul class="contact-list" id="contact-list"></ul>
+    </div>
+
     <form id="contact-form" class="contact-form">
       <div class="form-row">
         <input type="text" name="name" placeholder="Your name" required>
         <input type="email" name="email" placeholder="Your email" required>
       </div>
-      <textarea name="message" rows="5" placeholder="Your message" required></textarea>
+      <textarea name="message" rows="6" placeholder="Your message" required></textarea>
       <button type="submit" class="btn btn-gradient" id="contact-submit">Send Message</button>
       <p id="contact-status" class="contact-status"></p>
     </form>
