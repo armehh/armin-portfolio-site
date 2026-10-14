@@ -50,6 +50,45 @@ const CONTENT = {
       { target: 2, decimals: 0, label: "Leadership Roles" },
       { target: 8, decimals: 0, label: "Languages & Tools*" },
     ],
+    // Small glass cards floating around the hero photo
+    floatCards: [
+      { value: "75.25", label: "SUS score · Dam Haji 3D" },
+      { value: "Best Executive", label: "Award · PERTAMA" },
+      { value: "Open to internship", label: "10 Aug – 28 Dec 2026" },
+    ],
+  },
+
+  // Text beside the big stat numbers
+  statsIntro: {
+    title: "Turning Ideas Into Working Projects",
+    text: "From traditional games rebuilt in 3D to full-stack ordering systems, here is a quick look at what I have shipped and led so far.",
+  },
+
+  // "What I do" cards in the About section
+  services: [
+    {
+      icon: "web",
+      title: "Full-Stack Web",
+      text: "PHP, MySQL and JavaScript apps with complete CRUD flows and well-structured databases.",
+    },
+    {
+      icon: "game",
+      title: "Games & 3D",
+      text: "Unity 6 and C# games with AI opponents, plus 3D environments modelled in 3ds Max and Blender.",
+    },
+    {
+      icon: "design",
+      title: "UI/UX & Multimedia",
+      text: "Posters, banners and interfaces designed in Figma, Illustrator and Photoshop.",
+    },
+  ],
+
+  // Dark highlight panel next to the summary
+  panel: {
+    label: "Available for placement",
+    title: "Seeking an IT internship",
+    text: "20 weeks, from 10 August 2026 to 28 December 2026. Ready to contribute to full-stack, front-end and UI/UX work.",
+    cta: "Get In Touch",
   },
 
   summary:
