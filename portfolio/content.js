@@ -54,7 +54,7 @@ const CONTENT = {
     floatCards: [
       { value: "75.25", label: "SUS score · Dam Haji 3D" },
       { value: "Best Executive", label: "Award · PERTAMA" },
-      { value: "Open to internship", label: "10 Aug – 28 Dec 2026" },
+      { value: "Open to work", label: "Front-End · Web · App Dev" },
     ],
   },
 
@@ -85,14 +85,14 @@ const CONTENT = {
 
   // Dark highlight panel next to the summary
   panel: {
-    label: "Available for placement",
-    title: "Seeking an IT internship",
-    text: "20 weeks, from 10 August 2026 to 28 December 2026. Ready to contribute to full-stack, front-end and UI/UX work.",
+    label: "Open to work",
+    title: "Seeking a fresh graduate role",
+    text: "Front-End Developer, Web Developer or Mobile App Developer. Currently interning as a System Analyst at HeiTech Padu Berhad.",
     cta: "Get In Touch",
   },
 
   summary:
-    "Creative and technically driven Software Engineering (Multimedia System Development) undergraduate at Universiti Kebangsaan Malaysia (UKM), currently seeking an Information Technology internship placement for 20 weeks, from 10 August 2026 to 28 December 2026. Skilled in Python, JavaScript, C#, Java, HTML, CSS, and MySQL, with hands-on experience in full-stack web development, front-end development, database management, and UI/UX design.",
+    "Creative and technically driven Software Engineering (Multimedia System Development) undergraduate at Universiti Kebangsaan Malaysia (UKM), currently interning as a System Analyst at HeiTech Padu Berhad, gaining hands-on experience in analysing requirements and working with real-world systems. Skilled in JavaScript, HTML, CSS, PHP, Java, C#, Python, and MySQL, with project experience in front-end and full-stack web development, mobile and game development, database management, and UI/UX design. As an upcoming fresh graduate, I am seeking a Front-End Developer, Web Developer, or Mobile App Developer role where I can turn clean designs into responsive, user-friendly products and grow within a collaborative engineering team.",
 
   experience: [
     {
