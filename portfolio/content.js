@@ -69,7 +69,7 @@ const CONTENT = {
         body: [
           "Coming from my time at PERTAMA, I wanted to bring that experience into a different kind of organization — one working across the entire Selangor student community at UKM rather than a single faculty.",
         ],
-   images: ["images/permas-1.JPG", "images/permas-2.JPG"],
+   images: ["images/permas-1.jpg", "images/permas-2.JPG"],
       },
     },
     {
