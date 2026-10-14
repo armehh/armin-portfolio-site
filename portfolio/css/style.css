@@ -5,11 +5,14 @@
   --grad-2: #2563eb;
   --grad-3: #06b6d4;
   --grey-bg: #f5f8fc;
+  --blue-tint: #e9f0ff;
   --card-bg: #ffffff;
   --text-main: #14192b;
   --text-muted: #626a80;
   --border: #e4e9f3;
+  --border-strong: #c3d0ea;
   --radius: 16px;
+  --wave-h: 48px;
 }
 
 *{ box-sizing: border-box; margin:0; padding:0; }
@@ -100,7 +103,7 @@ a{ color: inherit; text-decoration: none; }
 #section-rail{ flex-direction: column; gap: 14px; }
 .rail-dot{
   width: 10px; height: 10px; border-radius: 50%;
-  background: var(--border);
+  background: var(--border-strong);
   border: 2px solid transparent;
   cursor: pointer;
   transition: all .25s ease;
@@ -117,9 +120,9 @@ a{ color: inherit; text-decoration: none; }
 
 .side-rail-right{ flex-direction: column; gap: 18px; }
 .side-rail-right a{
-  color: var(--text-muted);
+  color: #5b6788;
   width: 38px; height: 38px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-strong);
   border-radius: 50%;
   display:flex; align-items:center; justify-content:center;
   transition: all .2s ease;
@@ -130,7 +133,7 @@ a{ color: inherit; text-decoration: none; }
   border-color: transparent;
   transform: translateY(-2px);
 }
-.rail-line{ width: 1px; height: 70px; background: var(--border); margin-top: 6px; }
+.rail-line{ width: 1px; height: 70px; background: var(--border-strong); margin-top: 6px; }
 
 @media (min-width: 1300px){
   .side-rail{ display: flex; }
@@ -290,8 +293,43 @@ a{ color: inherit; text-decoration: none; }
 
 section{ padding: 5rem 0; }
 
-/* ===== Summary ===== */
-.summary-text{ max-width: 720px; margin: 0 auto; text-align: center; color: var(--text-muted); font-size: 1.02rem; }
+/* ============================================================
+   SECTION RHYTHM:  white -> blue -> white -> blue -> white -> navy
+   hero (navy) | summary (white) | experience (blue) | projects (white)
+   skills (blue) | education (white) | contact (navy) | footer (dark navy)
+   ============================================================ */
+
+/* ----- Wave dividers on the blue / navy sections ----- */
+.experience, .skills, .contact{
+  position: relative;
+  overflow: hidden;
+}
+.experience::before, .experience::after,
+.skills::before, .skills::after,
+.contact::before{
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  height: var(--wave-h);
+  z-index: 1;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60' preserveAspectRatio='none'%3E%3Cpath d='M0 0H1440V24C1320 52 1200 58 1080 44C900 24 780 4 600 12C420 20 240 56 0 40Z' fill='%23ffffff'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.experience::before, .skills::before, .contact::before{ top: -1px; }
+.experience::after, .skills::after{ bottom: -1px; transform: rotate(180deg); }
+
+/* ----- Summary (white) ----- */
+.summary{ background: #fff; padding: 4.5rem 0 5rem; }
+.summary-text{
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+  color: #3d465c;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
 
 /* ===== Expand / Learn more buttons ===== */
 .expand-btn{
@@ -311,8 +349,14 @@ section{ padding: 5rem 0; }
 .expand-btn::after{ content: "→"; transition: transform .2s ease; }
 .expand-btn:hover::after{ transform: translateX(3px); }
 
-/* ===== Timeline ===== */
-.experience{ background: var(--grey-bg); }
+/* ----- Experience (blue) ----- */
+.experience{
+  padding: 7rem 0;
+  background:
+    radial-gradient(560px 280px at 0% 8%, rgba(37,99,235,.12), transparent 70%),
+    radial-gradient(560px 280px at 100% 92%, rgba(6,182,212,.12), transparent 70%),
+    var(--blue-tint);
+}
 .timeline{ position: relative; max-width: 780px; margin: 0 auto; padding-left: 44px; }
 .timeline::before{
   content:""; position:absolute; left: 9px; top: 6px; bottom: 6px; width: 2px;
@@ -326,18 +370,24 @@ section{ padding: 5rem 0; }
   box-shadow: 0 0 0 6px rgba(37,99,235,.14);
 }
 .timeline-card{
-  background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+  background: #fff; border: 1px solid #d6e2fb; border-radius: var(--radius);
   padding: 1.5rem 1.7rem;
+  box-shadow: 0 12px 28px -16px rgba(29,78,216,.28);
   transition: transform .25s ease, box-shadow .25s ease;
 }
-.timeline-card:hover{ transform: translateY(-4px); box-shadow: 0 16px 32px -12px rgba(29,78,216,.2); }
+.timeline-card:hover{ transform: translateY(-4px); box-shadow: 0 18px 34px -12px rgba(29,78,216,.3); }
 .timeline-card h3{ color: var(--ink); font-size: 1.08rem; margin-bottom: 0.25rem; }
 .timeline-org{ color: var(--grad-2); font-size: 0.88rem; margin-bottom: 0.9rem; font-weight: 600; }
 .timeline-dates{ color: var(--text-muted); font-size: 0.8rem; margin-bottom: 0.6rem; }
 .timeline-card ul{ padding-left: 1.1rem; color: var(--text-muted); font-size: 0.92rem; }
 .timeline-card li{ margin-bottom: 0.4rem; }
 
-/* ===== Projects ===== */
+/* ----- Projects (white) ----- */
+.projects{
+  background:
+    radial-gradient(620px 300px at 100% 0%, rgba(37,99,235,.07), transparent 70%),
+    #fff;
+}
 .project-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
 .project-card{
   position: relative;
@@ -346,7 +396,13 @@ section{ padding: 5rem 0; }
   border-radius: var(--radius);
   padding: 1.7rem;
   overflow: hidden;
+  box-shadow: 0 10px 30px -20px rgba(16,25,46,.3);
   transition: transform .3s ease, box-shadow .3s ease;
+}
+.project-card::before{
+  content: "";
+  position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--grad-1), var(--grad-3));
 }
 .project-card:hover{ transform: translateY(-6px); box-shadow: 0 24px 45px -18px rgba(29,78,216,.28); }
 .project-glow{
@@ -369,13 +425,28 @@ section{ padding: 5rem 0; }
 .repo-link{ font-size: 0.83rem; font-weight: 600; color: var(--text-muted); transition: color .2s ease; }
 .repo-link:hover{ color: var(--grad-2); }
 
-/* ===== Skills ===== */
-.skills{ background: var(--grey-bg); }
-.skills-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 2.4rem 3rem; max-width: 900px; margin: 0 auto; }
+/* ----- Skills (blue) ----- */
+.skills{
+  padding: 7rem 0;
+  background:
+    radial-gradient(560px 280px at 100% 8%, rgba(37,99,235,.12), transparent 70%),
+    radial-gradient(560px 280px at 0% 92%, rgba(6,182,212,.12), transparent 70%),
+    var(--blue-tint);
+}
+.skills-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; max-width: 960px; margin: 0 auto; }
+.skill-block{
+  background: #fff;
+  border: 1px solid #d6e2fb;
+  border-radius: var(--radius);
+  padding: 1.5rem 1.7rem;
+  box-shadow: 0 12px 28px -16px rgba(29,78,216,.28);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.skill-block:hover{ transform: translateY(-4px); box-shadow: 0 18px 34px -12px rgba(29,78,216,.3); }
 .skill-block h3{ color: var(--text-main); font-size: 1rem; margin-bottom: 0.9rem; }
 .tags{ display:flex; flex-wrap: wrap; gap: 0.55rem; }
 .tags span{
-  background: #fff; border: 1px solid var(--border); color: var(--ink); font-size: 0.82rem;
+  background: #f1f6ff; border: 1px solid #dbe6fb; color: var(--ink); font-size: 0.82rem;
   padding: 6px 13px; border-radius: 100px; font-weight: 500;
   transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
 }
@@ -387,36 +458,51 @@ section{ padding: 5rem 0; }
   color: #fff;
 }
 
-/* ===== Education / Achievements / Languages ===== */
+/* ----- Education / Achievements / Languages (white) ----- */
+.bottom-grid{ background: #fff; padding: 5rem 0 6rem; }
 .bottom-grid-inner{ display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-.edu-item{ margin-bottom: 1.4rem; }
+.edu-item{
+  margin-bottom: 1.4rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--grad-2);
+}
 .edu-item h3{ font-size: 1rem; color: var(--text-main); }
 .edu-sub{ color: var(--grad-2); font-size: 0.88rem; margin: 0.15rem 0; font-weight: 500; }
 .plain-list{ list-style: none; padding-left: 0; color: var(--text-muted); font-size: 0.92rem; }
 .plain-list li{ margin-bottom: 0.6rem; display:flex; align-items:flex-start; gap: 0.5rem; }
 .trophy{ flex-shrink:0; }
 
-/* ===== Contact ===== */
-.contact{ background: var(--grey-bg); }
+/* ----- Contact (navy, matches the hero) ----- */
+.contact{
+  padding: 7rem 0 5.5rem;
+  color: #fff;
+  background:
+    radial-gradient(520px 260px at 0% 100%, rgba(37,99,235,.35), transparent 70%),
+    radial-gradient(520px 260px at 100% 0%, rgba(6,182,212,.22), transparent 70%),
+    linear-gradient(160deg, var(--navy) 0%, #0f2350 55%, #0c1f45 100%);
+}
+.contact .section-title{ color: #fff; }
 .contact-form{ max-width: 600px; margin: 0 auto; text-align: center; }
 .form-row{ display:flex; gap: 1rem; margin-bottom: 1rem; }
 .contact-form input, .contact-form textarea{
-  width: 100%; border: 1px solid var(--border); border-radius: 10px; padding: 13px 15px;
+  width: 100%; border: 1px solid transparent; border-radius: 10px; padding: 13px 15px;
   font-family: inherit; font-size: 0.95rem; margin-bottom: 1rem; background: #fff;
+  box-shadow: 0 10px 24px -14px rgba(0,0,0,.5);
   transition: border-color .2s ease, box-shadow .2s ease;
 }
 .contact-form input:focus, .contact-form textarea:focus{
-  outline: none; border-color: var(--grad-2);
-  box-shadow: 0 0 0 4px rgba(37,99,235,.14);
+  outline: none; border-color: var(--grad-3);
+  box-shadow: 0 0 0 4px rgba(6,182,212,.28);
 }
-.contact-status{ margin-top: 0.8rem; font-size: 0.9rem; color: var(--text-muted); }
-.contact-status.success{ color: #1a7a3c; }
-.contact-status.error{ color: #b3261e; }
+.contact-status{ margin-top: 0.8rem; font-size: 0.9rem; color: #b9c2de; }
+.contact-status.success{ color: #6ee7a0; }
+.contact-status.error{ color: #ff9b94; }
 
 /* ===== Footer ===== */
 .footer{
-  background: linear-gradient(120deg, var(--navy), #0f2350);
-  color: #b9c2de;
+  background: #060d1d;
+  border-top: 1px solid rgba(255,255,255,.07);
+  color: #9aa5c6;
   padding: 1.8rem 0;
   font-size: 0.85rem;
 }
@@ -488,8 +574,11 @@ section{ padding: 5rem 0; }
   .hero-photo{ margin: 0 auto; }
 }
 @media (max-width: 600px){
+  :root{ --wave-h: 28px; }
   .nav-links{ display:none; }
   .hero-text h1{ font-size: 2.1rem; }
   .form-row{ flex-direction: column; }
   .stats-strip{ grid-template-columns: repeat(2, 1fr); }
+  .experience, .skills{ padding: 5.5rem 0; }
+  .contact{ padding: 5.5rem 0 4.5rem; }
 }
