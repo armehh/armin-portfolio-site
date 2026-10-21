@@ -50,10 +50,49 @@ const CONTENT = {
       { target: 2, decimals: 0, label: "Leadership Roles" },
       { target: 8, decimals: 0, label: "Languages & Tools*" },
     ],
+    // Small glass cards floating around the hero photo
+    floatCards: [
+      { value: "75.25", label: "SUS score · Dam Haji 3D" },
+      { value: "Best Executive", label: "Award · PERTAMA" },
+      { value: "Open to work", label: "Front-End · Web · App Dev" },
+    ],
+  },
+
+  // Text beside the big stat numbers
+  statsIntro: {
+    title: "Turning Ideas Into Working Projects",
+    text: "From traditional games rebuilt in 3D to full-stack ordering systems, here is a quick look at what I have shipped and led so far.",
+  },
+
+  // "What I do" cards in the About section
+  services: [
+    {
+      icon: "web",
+      title: "Full-Stack Web",
+      text: "PHP, MySQL and JavaScript apps with complete CRUD flows and well-structured databases.",
+    },
+    {
+      icon: "game",
+      title: "Games & 3D",
+      text: "Unity 6 and C# games with AI opponents, plus 3D environments modelled in 3ds Max and Blender.",
+    },
+    {
+      icon: "design",
+      title: "UI/UX & Multimedia",
+      text: "Posters, banners and interfaces designed in Figma, Illustrator and Photoshop.",
+    },
+  ],
+
+  // Dark highlight panel next to the summary
+  panel: {
+    label: "Open to work",
+    title: "Seeking a fresh graduate role",
+    text: "Front-End Developer, Web Developer or Mobile App Developer. Currently interning as a System Analyst at HeiTech Padu Berhad.",
+    cta: "Get In Touch",
   },
 
   summary:
-    "Creative and technically driven Software Engineering (Multimedia System Development) undergraduate at Universiti Kebangsaan Malaysia (UKM), currently seeking an Information Technology internship placement for 20 weeks, from 10 August 2026 to 28 December 2026. Skilled in Python, JavaScript, C#, Java, HTML, CSS, and MySQL, with hands-on experience in full-stack web development, front-end development, database management, and UI/UX design.",
+    "Creative and technically driven Software Engineering (Multimedia System Development) undergraduate at Universiti Kebangsaan Malaysia (UKM), currently interning as a System Analyst at HeiTech Padu Berhad, gaining hands-on experience in analysing requirements and working with real-world systems. Skilled in JavaScript, HTML, CSS, PHP, Java, C#, Python, and MySQL, with project experience in front-end and full-stack web development, mobile and game development, database management, and UI/UX design. As an upcoming fresh graduate, I am seeking a Front-End Developer, Web Developer, or Mobile App Developer role where I can turn clean designs into responsive, user-friendly products and grow within a collaborative engineering team.",
 
   experience: [
     {
