@@ -1,14 +1,9 @@
-/* ============================================================
-   All page content is rendered from CONTENT (see content.js).
-   Edit content.js to change text/images — you shouldn't need to
-   touch this file for everyday updates.
-   ============================================================ */
+
 
 const esc = (str) => String(str).replace(/[&<>"']/g, (c) => ({
   "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
 }[c]));
 
-/* Small inline icons (stroke style, inherit text colour) */
 const ICONS = {
   web: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>',
   game: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="M3 7l9 5 9-5"/><line x1="12" y1="12" x2="12" y2="22"/></svg>',
@@ -20,7 +15,6 @@ const ICONS = {
   github: '<svg viewBox="0 0 24 24" width="17" height="17"><path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55v-2.15c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18.92-.26 1.9-.38 2.88-.39.98.01 1.96.13 2.88.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.77.11 3.06.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.4-5.26 5.68.42.36.78 1.08.78 2.18v3.23c0 .31.21.66.79.55A10.51 10.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>'
 };
 
-/* ===== Hero ===== */
 document.getElementById("hero-eyebrow").textContent = CONTENT.hero.eyebrow;
 document.getElementById("hero-name").innerHTML = `${esc(CONTENT.hero.nameLine1)}<br>${esc(CONTENT.hero.nameLine2)}`;
 document.getElementById("hero-photo").src = CONTENT.hero.photo;
@@ -34,7 +28,6 @@ document.getElementById("hero-contact").innerHTML = `
   <a href="${CONTENT.hero.githubUrl}" target="_blank" rel="noopener">GitHub</a>
 `;
 
-/* Floating glass cards around the hero photo */
 document.getElementById("hero-float-cards").innerHTML = (CONTENT.hero.floatCards || [])
   .slice(0, 3)
   .map((c, i) => `<div class="float-card fc-${i + 1}"><strong>${esc(c.value)}</strong><span>${esc(c.label)}</span></div>`)
@@ -51,12 +44,10 @@ document.getElementById("footer-links").innerHTML = `
   ${esc(CONTENT.hero.phoneDisplay)}
 `;
 
-/* ===== Tech marquee (built from the skill lists, repeated for a seamless loop) ===== */
 const marqueeItems = [...new Set(CONTENT.skillCategories.flatMap((c) => c.items))];
 const marqueeHtml = marqueeItems.map((t) => `<span class="marquee-item">${esc(t)}</span>`).join("");
 document.getElementById("marquee-track").innerHTML = marqueeHtml + marqueeHtml;
 
-/* ===== Stats ===== */
 document.getElementById("stats-title").textContent = CONTENT.statsIntro.title;
 document.getElementById("stats-text").textContent = CONTENT.statsIntro.text;
 
@@ -68,7 +59,6 @@ CONTENT.hero.stats.forEach((s) => {
   statsStrip.appendChild(div);
 });
 
-/* ===== Summary + services + highlight panel ===== */
 document.getElementById("summary-text").textContent = CONTENT.summary;
 
 document.getElementById("services-grid").innerHTML = CONTENT.services.map((s) => `
@@ -83,7 +73,6 @@ document.getElementById("panel-title").textContent = CONTENT.panel.title;
 document.getElementById("panel-text").textContent = CONTENT.panel.text;
 document.getElementById("panel-cta").textContent = CONTENT.panel.cta;
 
-/* ===== Experience timeline ===== */
 const timelineEl = document.getElementById("timeline");
 CONTENT.experience.forEach((item, i) => {
   const bulletsHtml = item.bullets.map((b) => `<li>${esc(b)}</li>`).join("");
@@ -101,7 +90,6 @@ CONTENT.experience.forEach((item, i) => {
   timelineEl.appendChild(div);
 });
 
-/* ===== Projects ===== */
 const projectGrid = document.getElementById("project-grid");
 CONTENT.projects.forEach((p, i) => {
   const bulletsHtml = p.bullets.map((b) => `<li>${esc(b)}</li>`).join("");
@@ -123,7 +111,6 @@ CONTENT.projects.forEach((p, i) => {
   projectGrid.appendChild(div);
 });
 
-/* ===== Skills ===== */
 const skillsGrid = document.getElementById("skills-grid");
 CONTENT.skillCategories.forEach((cat, i) => {
   const tagsHtml = cat.items.map((t) => `<span>${esc(t)}</span>`).join("");
@@ -136,7 +123,6 @@ CONTENT.skillCategories.forEach((cat, i) => {
   skillsGrid.appendChild(div);
 });
 
-/* ===== Education ===== */
 const eduList = document.getElementById("education-list");
 CONTENT.education.forEach((e, i) => {
   const div = document.createElement("div");
@@ -148,13 +134,11 @@ CONTENT.education.forEach((e, i) => {
   eduList.appendChild(div);
 });
 
-/* ===== Achievements & Languages ===== */
 document.getElementById("achievements-list").innerHTML = CONTENT.achievements
   .map((a) => `<li><span class="trophy">🏆</span>${esc(a)}</li>`).join("");
 document.getElementById("languages-list").innerHTML = CONTENT.languages
   .map((l) => `<li>${esc(l)}</li>`).join("");
 
-/* ===== Contact info list ===== */
 const H = CONTENT.hero;
 const contactRows = [
   { icon: "mail", label: "Email", value: H.email, href: `mailto:${H.email}` },
@@ -172,7 +156,6 @@ document.getElementById("contact-list").innerHTML = contactRows.map((r) => {
     : `<li><div class="contact-row">${inner}</div></li>`;
 }).join("");
 
-/* ===== Modal (expand panels) ===== */
 const modalOverlay = document.getElementById("modal-overlay");
 const modalGallery = document.getElementById("modal-gallery");
 const modalMainImage = document.getElementById("modal-main-image");
@@ -242,7 +225,6 @@ document.addEventListener("click", (e) => {
   }
 });
 
-/* ===== Side rail — section dot navigation ===== */
 const sectionIds = ["top", "about", "experience", "projects", "skills", "education", "contact"];
 const sectionLabels = ["Home", "About", "Experience", "Projects", "Skills", "Education", "Contact"];
 const railEl = document.getElementById("section-rail");
@@ -267,7 +249,6 @@ const sectionObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.3 });
 sectionEls.forEach((el) => sectionObserver.observe(el));
 
-/* ===== Scroll reveal ===== */
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
@@ -278,7 +259,6 @@ const revealObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
 
-/* ===== Count-up stats ===== */
 const statsObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (!entry.isIntersecting) return;
@@ -302,7 +282,6 @@ const statsObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.4 });
 document.querySelectorAll(".stat-number").forEach((el) => statsObserver.observe(el));
 
-/* ===== Typing effect ===== */
 const typeTarget = document.querySelector(".type-target");
 const phrases = CONTENT.hero.typingPhrases;
 let phraseIndex = 0, charIndex = 0, deleting = false;
@@ -323,8 +302,6 @@ function typeLoop() {
 }
 typeLoop();
 
-/* ===== Contact form submission ===== */
-// ⚠️ Set this to your live backend URL (see README).
 const CONTACT_API_URL = "https://armin-backend-c2f6.onrender.com/api/contact";
 
 const form = document.getElementById("contact-form");

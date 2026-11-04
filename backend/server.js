@@ -4,11 +4,9 @@ require("dotenv").config();
 
 const app = express();
 
-// Allow requests from your static site's domain (set FRONTEND_URL in .env / Render dashboard)
 app.use(cors({ origin: process.env.FRONTEND_URL || "*" }));
 app.use(express.json());
 
-// Basic health check — useful to confirm the service is alive on Render
 app.get("/", (req, res) => {
   res.send("Portfolio contact API is running.");
 });
@@ -21,8 +19,7 @@ app.post("/api/contact", async (req, res) => {
   }
 
   try {
-    // Uses Resend's HTTPS API instead of raw SMTP — Render's free tier blocks
-    // outbound SMTP ports (465/587), but regular HTTPS (443) always works.
+
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -31,7 +28,7 @@ app.post("/api/contact", async (req, res) => {
       },
       body: JSON.stringify({
         from: "Portfolio Contact Form <onboarding@resend.dev>",
-        to: [process.env.EMAIL_USER], // sends to yourself
+        to: [process.env.EMAIL_USER],
         reply_to: email,
         subject: `New portfolio message from ${name}`,
         text: `From: ${name} (${email})\n\n${message}`,
