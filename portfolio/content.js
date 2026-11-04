@@ -1,29 +1,4 @@
-/* ============================================================
-   CONTENT.JS — edit everything here. No HTML/CSS knowledge needed.
 
-   - To change any text: edit the strings below.
-   - To add photos to an "expand" panel: put the image file(s) in
-     the /images folder, then list them in that entry's images: []
-     array, e.g. images: ["images/photo1.jpg", "images/photo2.jpg"]
-     (leave it as images: [] for no photos).
-     - 0 images: gallery is hidden entirely.
-     - 1 image: shows just that photo, no thumbnails.
-     - 2+ images: shows the first as the main photo, with small
-       clickable thumbnails below to switch between them.
-   - Each project can have a repoUrl: "" — paste your GitHub repo
-     link there and a "View Code" link appears on the card. Leave
-     it as "" to hide the link.
-   - To add a whole new project/experience/education entry: copy
-     an existing {...} block in that array and edit it.
-   - "expand" = the extra detail shown when someone clicks
-     "Learn more" on a card.
-
-   ⚠️ WATCH YOUR COMMAS: every item in a [...] list needs a comma
-   after it EXCEPT the last one. A missing comma will break the
-   entire site. If the site goes blank after an edit, press F12 in
-   your browser, click Console, and look for a red error — it will
-   point at the exact line.
-   ============================================================ */
 
 const CONTENT = {
   hero: {
@@ -50,7 +25,7 @@ const CONTENT = {
       { target: 2, decimals: 0, label: "Leadership Roles" },
       { target: 8, decimals: 0, label: "Languages & Tools*" },
     ],
-    // Small glass cards floating around the hero photo
+
     floatCards: [
       { value: "75.25", label: "SUS score · Dam Haji 3D" },
       { value: "Best Executive", label: "Award · PERTAMA" },
@@ -58,13 +33,11 @@ const CONTENT = {
     ],
   },
 
-  // Text beside the big stat numbers
   statsIntro: {
     title: "Turning Ideas Into Working Projects",
     text: "From traditional games rebuilt in 3D to full-stack ordering systems, here is a quick look at what I have shipped and led so far.",
   },
 
-  // "What I do" cards in the About section
   services: [
     {
       icon: "web",
@@ -83,7 +56,6 @@ const CONTENT = {
     },
   ],
 
-  // Dark highlight panel next to the summary
   panel: {
     label: "Open to work",
     title: "Seeking a fresh graduate role",
